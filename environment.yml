@@ -1,4 +1,4 @@
-name: botty
+name: botpd
 channels:
   - conda-forge
 dependencies:

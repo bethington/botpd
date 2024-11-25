@@ -6,10 +6,10 @@
 
 ## Getting started
 ```bash
-git clone https://github.com/bottytools/botty.git
-cd botty
-conda env create environment.yml
-conda activate botty
+git clone https://github.com/botpdtools/botpd.git
+cd botpd
+conda env create -f environment.yml
+conda activate botpd
 python src/main.py
 ```
 Important info for Powershell users:
@@ -21,14 +21,14 @@ conda init powershell
 ## Tests
 All automated tests can be found within the **/test/*** folder. The file and folder structure is supposed to mimic the src folder.
 ```bash
-conda activate botty
+conda activate botpd
 # To run all tests: (-s to see stdout, -v for verbose)
 pytest -s -v
 # To see std output:
 # To run a specific test:
 pytest test/smoke_test.py
 ```
-To test single files / routines, most files also can be executed seperatly. E.g. running `python src/pickit.py` -> going to d2r window -> throw stuff on the groudn -> press f11, will test the pickit.
+To test single files / routines, most files also can be executed seperatly. E.g. running `python src/pickit.py` -> going to pd2 window -> throw stuff on the groudn -> press f11, will test the pickit.
 
 ## Adding Items
 To add items you can check the **assets/items** folder. Screenshot whatever you want to pick up in the same way (all settings must be as if you ran the bot). Then add the filename to the param.ini [items] section (e.g. if boots_rare.png add boots_rare=1)
@@ -56,7 +56,7 @@ Want to implement a new char or build. Check this folder out. You will have to i
 Utilities functions and scripts e.g. for easily creating templates to traverse nodes and automatically generate code for it</br>
 
 ## Code routine
-main.py contains the main() function and is the entry point for botty. It will start 3 threads: death monitoring (death_manager.py), health monitoring (health_manager.py) and the bot (bot.py) itself. Whenever the two monitors either detect a player's death or chicken out of the game, the bot thread will be killed and restarted.</br>
+main.py contains the main() function and is the entry point for botpd. It will start 3 threads: death monitoring (death_manager.py), health monitoring (health_manager.py) and the bot (bot.py) itself. Whenever the two monitors either detect a player's death or chicken out of the game, the bot thread will be killed and restarted.</br>
 In bot.py is a state machine in its core an executes different actions based on the current state. The goal is to remove as much implementation details as possible from bot.py and "hide" them in different manager classes (e.g. pickit.py, pather.py, npc_manager.py, etc.)
 
 ## State Diagram

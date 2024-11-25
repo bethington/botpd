@@ -7,7 +7,7 @@ from beautifultable import BeautifulTable
 
 from logger import Logger
 from config import Config
-from messages import Messenger
+# from messages import Messenger
 from utils.misc import hms
 from utils.levels import get_level
 from version import __version__
@@ -17,7 +17,7 @@ from ui import player_bar
 
 class GameStats:
     def __init__(self):
-        self._messenger = Messenger()
+        # self._messenger = Messenger()
         self._start_time = time.time()
         self._timer = None
         self._timepaused = None
@@ -58,9 +58,9 @@ class GameStats:
             self._location_stats[self._location]["items"].append(item_name)
             self._location_stats["totals"]["items"] += 1
 
-        if send_message and self._messenger.enabled and not skip_log:
-            if expression[0] != "@":
-                self._messenger.send_item(item_name, img, self._location, ocr_text, expression, item_props)
+        # if send_message and self._messenger.enabled and not skip_log:
+        #     if expression[0] != "@":
+        #         self._messenger.send_item(item_name, img, self._location, ocr_text, expression, item_props)
 
     def log_death(self, img: str):
         self._death_counter += 1
@@ -68,8 +68,8 @@ class GameStats:
             self._location_stats[self._location]["deaths"] += 1
             self._location_stats["totals"]["deaths"] += 1
 
-        if self._messenger.enabled:
-            self._messenger.send_death(self._location, img)
+        # if self._messenger.enabled:
+        #     self._messenger.send_death(self._location, img)
 
     def log_chicken(self, img: str):
         self._chicken_counter += 1
@@ -77,8 +77,8 @@ class GameStats:
             self._location_stats[self._location]["chickens"] += 1
             self._location_stats["totals"]["chickens"] += 1
 
-        if Config().general["discord_log_chicken"] and self._messenger.enabled:
-            self._messenger.send_chicken(self._location, img)
+        # if Config().general["discord_log_chicken"] and self._messenger.enabled:
+        #     self._messenger.send_chicken(self._location, img)
 
     def log_merc_death(self):
         self._merc_death_counter += 1
@@ -215,8 +215,8 @@ class GameStats:
 
     def _send_status_update(self):
         msg = f"Status Report\n{self._create_msg()}\nVersion: {__version__}"
-        if self._messenger.enabled:
-            self._messenger.send_message(msg)
+        # if self._messenger.enabled:
+        #     self._messenger.send_message(msg)
 
     def _save_stats_to_file(self):
         msg = self._create_msg()

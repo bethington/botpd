@@ -63,7 +63,7 @@ if __name__ == "__main__":
     import keyboard
     import os
     keyboard.add_hotkey('f12', lambda: Logger.info('Force Exit (f12)') or os._exit(1))
-    print("Move to d2r window and press f11")
+    print("Move to pd2 window and press f11")
     keyboard.wait("f11")
     from char.hammerdin import Hammerdin
     from pather import Pather

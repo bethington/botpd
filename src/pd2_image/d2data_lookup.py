@@ -1,9 +1,9 @@
 import os
 import sys
 from parse import compile as compile_pattern
-from d2r_image.data_models import ItemQuality
-from d2r_image.d2data_data import ITEM_ARMOR, ITEM_MISC, ITEM_SET_ITEMS, ITEM_TYPES, ITEM_UNIQUE_ITEMS, ITEM_WEAPONS, REF_PATTERNS
-from d2r_image.strings_store import base_items
+from pd2_image.data_models import ItemQuality
+from pd2_image.d2data_data import ITEM_ARMOR, ITEM_MISC, ITEM_SET_ITEMS, ITEM_TYPES, ITEM_UNIQUE_ITEMS, ITEM_WEAPONS, REF_PATTERNS
+from pd2_image.strings_store import base_items
 from utils.misc import find_best_match
 from logger import Logger
 

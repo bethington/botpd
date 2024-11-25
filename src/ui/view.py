@@ -108,7 +108,7 @@ if __name__ == "__main__":
     from screen import start_detecting_window, stop_detecting_window
     start_detecting_window()
     keyboard.add_hotkey('f12', lambda: Logger.info('Force Exit (f12)') or stop_detecting_window() or os._exit(1))
-    print("Go to D2R window and press f11 to start game")
+    print("Go to PD2 window and press f11 to start game")
     keyboard.wait("f11")
     from config import Config
     import template_finder

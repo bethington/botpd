@@ -246,14 +246,14 @@ class TownManager:
         common.close()
         return new_loc, items
 
-# Test: Move to desired location in d2r and run any town action you want to test from there
+# Test: Move to desired location in pd2 and run any town action you want to test from there
 if __name__ == "__main__":
     import keyboard
     import os
     from screen import start_detecting_window
     start_detecting_window()
     keyboard.add_hotkey('f12', lambda: Logger.info('Force Exit (f12)') or os._exit(1))
-    print("Move to d2r window and press f11")
+    print("Move to pd2 window and press f11")
     keyboard.wait("f11")
     from char.paladin.hammerdin import Hammerdin
     from pather import Pather

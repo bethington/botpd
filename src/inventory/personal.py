@@ -15,16 +15,16 @@ from utils.custom_mouse import mouse
 from inventory import stash, common, vendor
 from ui import view
 from ui_manager import detect_screen_object, is_visible, select_screen_object_match, wait_until_visible, ScreenObjects, center_mouse, wait_for_update
-from messages import Messenger
-from d2r_image import processing as d2r_image
-from d2r_image.data_models import HoveredItem, ItemText
+# from messages import Messenger
+from pd2_image import processing as pd2_image
+from pd2_image.data_models import HoveredItem, ItemText
 from screen import grab, convert_screen_to_monitor
 from item import consumables
 from bnip.NTIPAliasStat import NTIPAliasStat as NTIP_STATS
 from bnip.actions import should_id, should_keep
 
 inv_gold_full = False
-messenger = Messenger()
+# messenger = Messenger()
 
 nontradable_items = ["key of ", "essense of", "wirt's", "jade figurine"]
 
@@ -75,7 +75,7 @@ def stash_all_items(items: list = None):
     """
     Stashing all items in inventory. Stash UI must be open when calling the function.
     """
-    global messenger
+    # global messenger
     if not get_inventory_gold_full() and items is None:
         Logger.debug("No items to stash, skip")
         return None
@@ -227,7 +227,7 @@ def inspect_items(inp_img: np.ndarray = None, close_window: bool = True, game_st
         # get the item description box
         item_properties, item_box = (None, None)
         try: # ! This happens because we don't know the items slot count. To get more context remove the try and catch and see what happens
-            item_properties, item_box = d2r_image.get_hovered_item(hovered_item)
+            item_properties, item_box = pd2_image.get_hovered_item(hovered_item)
         except Exception as e:
             Logger.error(f"personal.inspect_items(): Failed to get item properties for slot {slot}")
             failed = True
@@ -296,7 +296,7 @@ def inspect_items(inp_img: np.ndarray = None, close_window: bool = True, game_st
                         mouse.move(x_m, y_m, randomize = 4, delay_factor = delay)
                         wait(0.05, 0.1)
                         hovered_item = grab(True)
-                        item_properties, item_box = d2r_image.get_hovered_item(hovered_item)
+                        item_properties, item_box = pd2_image.get_hovered_item(hovered_item)
 
                     if item_box is not None:
                         log_item(item_box, item_properties)
@@ -450,7 +450,7 @@ def update_tome_key_needs(img: np.ndarray = None, item_type: str = "tp") -> bool
     wait(0.2, 0.2)
     hovered_item = grab(True)
     # get the item description box
-    item_properties, item_box = d2r_image.get_hovered_item(hovered_item)
+    item_properties, item_box = pd2_image.get_hovered_item(hovered_item)
     if item_box is not None:
         try:
             quantity = int(item_properties.NTIPAliasStat[NTIP_STATS["quantity"]])

@@ -4,14 +4,14 @@ import time
 import keyboard
 from ui_manager import ScreenObjects, is_visible
 from ui import view, loading
-from utils.misc import set_d2r_always_on_top
+from utils.misc import set_pd2_always_on_top
 
 class GameRecovery:
     def __init__(self, death_manager: DeathManager):
         self._death_manager = death_manager
 
     def go_to_hero_selection(self):
-        set_d2r_always_on_top()
+        set_pd2_always_on_top()
         time.sleep(1)
         # clean up key presses that might be pressed in the run_thread
         keyboard.release(Config().char["stand_still"])

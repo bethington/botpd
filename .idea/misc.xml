@@ -3,5 +3,5 @@
   <component name="Black">
     <option name="sdkName" value="botty" />
   </component>
-  <component name="ProjectRootManager" version="2" project-jdk-name="botty" project-jdk-type="Python SDK" />
+  <component name="ProjectRootManager" version="2" project-jdk-name="botpd" project-jdk-type="Python SDK" />
 </project>

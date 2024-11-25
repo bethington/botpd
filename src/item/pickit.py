@@ -9,8 +9,8 @@ import uuid
 
 from char import IChar
 from config import Config
-from d2r_image import processing as d2r_image
-from d2r_image.data_models import GroundItemList, GroundItem, EnhancedJSONEncoder
+from pd2_image import processing as pd2_image
+from pd2_image.data_models import GroundItemList, GroundItem, EnhancedJSONEncoder
 from inventory import personal
 from item import consumables
 from item.consumables import ITEM_CONSUMABLES_MAP
@@ -50,7 +50,7 @@ class PickIt:
     def _locate_items() -> tuple[GroundItemList, ndarray]:
         img = grab()
         start = time.time()
-        items = d2r_image.get_ground_loot(img).items.copy()
+        items = pd2_image.get_ground_loot(img).items.copy()
         Logger.debug(f"Read {len(items)} ground items in {round(time.time() - start, 3)} seconds")
         items = sorted(items, key=lambda item: item.Distance)
         return items, img
@@ -196,7 +196,7 @@ if __name__ == "__main__":
 
     keyboard.add_hotkey('f12', lambda: Logger.info('Force Exit (f12)') or stop_detecting_window() or os._exit(1))
     start_detecting_window()
-    print("Move to d2r window and press f11")
+    print("Move to pd2 window and press f11")
     keyboard.wait("f11")
 
     pather = Pather()

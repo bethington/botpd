@@ -259,7 +259,7 @@ class mouse:
 
     @staticmethod
     def _is_clicking_safe():
-        # Because of reports that botty lost equiped items, let's check if the inventory is open, and if it is, restrict the mouse move
+        # Because of reports that botpd lost equiped items, let's check if the inventory is open, and if it is, restrict the mouse move
         mouse_pos = screen.convert_monitor_to_screen(_mouse.get_position())
         is_inventory_open = template_finder.search(
             "INVENTORY_GOLD_BTN",

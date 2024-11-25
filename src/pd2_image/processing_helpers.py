@@ -5,17 +5,17 @@ import time
 import math
 import copy
 
-from d2r_image.data_models import GroundItem, GroundItemList, ItemQuality, ItemQualityKeyword, ItemText
-from d2r_image.bnip_data import NTIP_ALIAS_QUALITY_MAP
-from d2r_image.bnip_helpers import basename_to_types
-from d2r_image.ocr import image_to_text
-from d2r_image.processing_data import Runeword
-import d2r_image.d2data_lookup as d2data_lookup
-from d2r_image.d2data_lookup import fuzzy_base_item_match
-from d2r_image.processing_data import EXPECTED_HEIGHT_RANGE, EXPECTED_WIDTH_RANGE, GAUS_FILTER, ITEM_COLORS, QUALITY_COLOR_MAP, Runeword, BOX_EXPECTED_HEIGHT_RANGE, BOX_EXPECTED_WIDTH_RANGE
-from d2r_image.strings_store import base_items
+from pd2_image.data_models import GroundItem, GroundItemList, ItemQuality, ItemQualityKeyword, ItemText
+from pd2_image.bnip_data import NTIP_ALIAS_QUALITY_MAP
+from pd2_image.bnip_helpers import basename_to_types
+from pd2_image.ocr import image_to_text
+from pd2_image.processing_data import Runeword
+import pd2_image.d2data_lookup as d2data_lookup
+from pd2_image.d2data_lookup import fuzzy_base_item_match
+from pd2_image.processing_data import EXPECTED_HEIGHT_RANGE, EXPECTED_WIDTH_RANGE, GAUS_FILTER, ITEM_COLORS, QUALITY_COLOR_MAP, Runeword, BOX_EXPECTED_HEIGHT_RANGE, BOX_EXPECTED_WIDTH_RANGE
+from pd2_image.strings_store import base_items
 from utils.misc import color_filter, erode_to_black, slugify
-from d2r_image.ocr import image_to_text
+from pd2_image.ocr import image_to_text
 from ui_manager import get_hud_mask
 
 from screen import convert_screen_to_monitor
@@ -610,7 +610,7 @@ if __name__ == "__main__":
     from screen import start_detecting_window, grab, stop_detecting_window
     start_detecting_window()
     keyboard.add_hotkey('f12', lambda: Logger.info('Force Exit (f12)') or stop_detecting_window() or os._exit(1))
-    print("Go to D2R window and press f11 to start")
+    print("Go to PD2 window and press f11 to start")
     keyboard.wait("f11")
     from config import Config
 

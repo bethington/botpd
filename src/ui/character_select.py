@@ -6,7 +6,7 @@ from screen import convert_screen_to_monitor, grab
 import template_finder
 from utils.misc import wait
 from logger import Logger
-from d2r_image import ocr
+from pd2_image import ocr
 import numpy as np
 from ui_manager import detect_screen_object, ScreenObjects
 

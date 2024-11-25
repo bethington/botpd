@@ -3,7 +3,7 @@ import keyboard
 import subprocess
 
 import template_finder
-from utils.misc import wait, set_d2r_always_on_top
+from utils.misc import wait, set_pd2_always_on_top
 from screen import get_offset_state, grab
 from ui.main_menu import MAIN_MENU_MARKERS
 
@@ -22,23 +22,23 @@ def safe_exit(error_code=0):
     os._exit(error_code)
 
 def kill_game():
-    while process_exists("D2R.exe"):
+    while process_exists("PD2.exe"):
         os.system("taskkill /f /im  BlizzardError.exe")
-        os.system("taskkill /f /im  D2R.exe")
+        os.system("taskkill /f /im  PD2.exe")
         wait(1.0, 1.5)
 
-def restart_game(d2r_path, launch_options):
+def restart_game(pd2_path, launch_options):
     kill_game()
     wait(1.0, 1.5)
     # This method should function similar to opening the exe via double-click
-    os.startfile(f"{d2r_path}/D2R.exe", arguments = launch_options)
+    os.startfile(f"{pd2_path}/PD2.exe", arguments = launch_options)
     wait(4.4, 5.5)
     for _ in range(20):
         keyboard.send("space")
         wait(0.5, 1.0)
     success = False
     attempts = 0
-    set_d2r_always_on_top()
+    set_pd2_always_on_top()
     while not success:
         success = get_offset_state()
         wait(0.5, 1.0)

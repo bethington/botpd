@@ -10,10 +10,10 @@ from game_recovery import GameRecovery
 from game_stats import GameStats
 from health_manager import HealthManager
 from logger import Logger
-from messages import Messenger
+# from messages import Messenger
 from screen import grab, get_offset_state
 from utils.restart import restart_game, safe_exit
-from utils.misc import kill_thread, set_d2r_always_on_top, restore_d2r_window_visibility
+from utils.misc import kill_thread, set_pd2_always_on_top, restore_pd2_window_visibility
 
 
 class GameController:
@@ -39,7 +39,7 @@ class GameController:
         self.death_manager.set_callback(lambda: self.bot.stop() or kill_thread(self.bot_thread))
         self.health_manager.set_callback(lambda: self.bot.stop() or kill_thread(self.bot_thread))
         do_restart = False
-        messenger = Messenger()
+        # messenger = Messenger()
         force_stopped = False
         while 1:
             max_game_length_reached = self.game_stats.get_current_game_length() > Config().general["max_game_length_s"]
@@ -58,10 +58,10 @@ class GameController:
                 kill_thread(self.bot_thread)
                 # Try to recover from whatever situation we are and go back to hero selection
                 if max_consecutive_fails_reached:
-                    msg = f"Consecutive fails {self.game_stats.get_consecutive_runs_failed()} >= Max {Config().general['max_consecutive_fails']}. Quitting botty."
+                    msg = f"Consecutive fails {self.game_stats.get_consecutive_runs_failed()} >= Max {Config().general['max_consecutive_fails']}. Quitting botpd."
                     Logger.error(msg)
-                    if messenger.enabled:
-                        messenger.send_message(msg)
+                    # if messenger.enabled:
+                    #     messenger.send_message(msg)
                     safe_exit(1)
                 else:
                     do_restart = self.game_recovery.go_to_hero_selection()
@@ -77,11 +77,11 @@ class GameController:
         else:
             if Config().general["info_screenshots"]:
                 cv2.imwrite("./log/screenshots/info/info_could_not_recover_" + time.strftime("%Y%m%d_%H%M%S") + ".png", grab())
-            if Config().general['restart_d2r_when_stuck']:
+            if Config().general['restart_pd2_when_stuck']:
                 Logger.error("Could not recover from a max game length violation. Restarting the Game.")
-                if messenger.enabled:
-                    messenger.send_message("Got stuck and will now restart D2R")
-                if restart_game(Config().general["d2r_path"], Config().advanced_options["launch_options"]):
+                # if messenger.enabled:
+                #     messenger.send_message("Got stuck and will now restart PD2")
+                if restart_game(Config().general["pd2_path"], Config().advanced_options["launch_options"]):
                     self.game_stats.log_end_game(failed=max_game_length_reached)
                     if self.setup_screen():
                         self.start_health_manager_thread()
@@ -89,21 +89,21 @@ class GameController:
                         self.game_recovery = GameRecovery(self.death_manager)
                         return self.run_bot()
                 Logger.error("Could not restart the game. Quitting.")
-                if messenger.enabled:
-                    messenger.send_message("Got stuck and could not restart the game. Quitting.")
+                # if messenger.enabled:
+                #     messenger.send_message("Got stuck and could not restart the game. Quitting.")
             else:
-                Logger.error("Could not recover from a max game length violation. Quitting botty.")
-                if messenger.enabled:
-                    messenger.send_message("Got stuck and will now quit botty")
+                Logger.error("Could not recover from a max game length violation. Quitting botpd.")
+                # if messenger.enabled:
+                #     messenger.send_message("Got stuck and will now quit botpd")
             safe_exit(1)
 
     def start(self):
-        # Check if we user should update the d2r settings
+        # Check if we user should update the pd2 settings
         diff = check_settings()
         if len(diff) > 0:
-            Logger.warning("Your D2R settings differ from the requiered ones. Please use Auto Settings to adjust them. The differences are:")
+            Logger.warning("Your PD2 settings differ from the requiered ones. Please use Auto Settings to adjust them. The differences are:")
             Logger.warning(f"{diff}")
-        set_d2r_always_on_top()
+        set_pd2_always_on_top()
         self.setup_screen()
         self.start_health_manager_thread()
         self.start_death_manager_thread()
@@ -113,7 +113,7 @@ class GameController:
         self.is_running = True
 
     def stop(self):
-        restore_d2r_window_visibility()
+        restore_pd2_window_visibility()
         if self.death_monitor_thread: kill_thread(self.death_monitor_thread)
         if self.health_monitor_thread: kill_thread(self.health_monitor_thread)
         if self.bot_thread: kill_thread(self.bot_thread)

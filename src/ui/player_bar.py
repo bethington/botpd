@@ -4,7 +4,7 @@ from utils.custom_mouse import mouse
 from utils.misc import cut_roi, wait
 from logger import Logger
 from config import Config
-from d2r_image import ocr
+from pd2_image import ocr
 
 def get_experience():
     # mouseover exp bar
@@ -51,7 +51,7 @@ if __name__ == "__main__":
     start_detecting_window()
 
     keyboard.add_hotkey('f12', lambda: Logger.info('Force Exit (f12)') or os._exit(1))
-    print("Go to D2R window and press f11 to start game")
+    print("Go to PD2 window and press f11 to start game")
     keyboard.wait("f11")
 
     exp = get_experience()

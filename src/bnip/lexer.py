@@ -110,7 +110,7 @@ class Lexer:
             elif self.current_token == "[":
                 self.tokens.append(self._create_keyword_lookup())
             elif self.current_token in CHARS:
-                self.tokens.append(self._create_d2r_image_data_lookup())
+                self.tokens.append(self._create_pd2_image_data_lookup())
             elif self.current_section == BNipSections.PROP and self.text_i == 0 and self.current_token == "@":
                 self.tokens.append(Token(TokenType.NOTIFICATION, '@'))
                 self._advance()
@@ -301,7 +301,7 @@ class Lexer:
 
         return Token(TokenType.UNKNOWN, lookup_key)
 
-    def _create_d2r_image_data_lookup(self) -> Token:
+    def _create_pd2_image_data_lookup(self) -> Token:
         lookup_key = ""
 
         found_lookup_key = re.match(r"^(\w+)\s*", self._get_current_iteration_of_text_raw())

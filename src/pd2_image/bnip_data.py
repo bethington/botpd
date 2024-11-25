@@ -1,4 +1,4 @@
-from d2r_image.data_models import ItemQuality, ItemQualityKeyword
+from pd2_image.data_models import ItemQuality, ItemQualityKeyword
 
 
 NTIP_ALIAS_QUALITY_MAP = {

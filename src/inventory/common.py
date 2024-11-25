@@ -13,7 +13,7 @@ from ui import view
 from screen import convert_screen_to_monitor, grab
 from logger import Logger
 from template_finder import TemplateMatch
-from d2r_image import ocr
+from pd2_image import ocr
 
 def get_slot_pos_and_img(img: np.ndarray, column: int, row: int) -> tuple[tuple[int, int],  np.ndarray]:
     """
@@ -233,7 +233,7 @@ if __name__ == "__main__":
     from utils.misc import color_filter
     start_detecting_window()
     keyboard.add_hotkey('f12', lambda: Logger.info('Force Exit (f12)') or stop_detecting_window() or os._exit(1))
-    print("Move to d2r window and press f11")
+    print("Move to pd2 window and press f11")
     keyboard.wait("f11")
 
     #select_tab(0)

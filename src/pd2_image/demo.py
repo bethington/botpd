@@ -9,10 +9,10 @@ import screen
 from utils.misc import cut_roi, slugify
 from utils import download_test_assets
 
-import d2r_image.processing as processing
-from d2r_image.processing import get_hovered_item
-from d2r_image.processing_helpers import clean_img, crop_text_clusters
-from d2r_image.data_models import ItemQuality, ItemQualityKeyword, ItemText, EnhancedJSONEncoder
+import pd2_image.processing as processing
+from pd2_image.processing import get_hovered_item
+from pd2_image.processing_helpers import clean_img, crop_text_clusters
+from pd2_image.data_models import ItemQuality, ItemQualityKeyword, ItemText, EnhancedJSONEncoder
 
 screen.set_window_position(0, 0)
 
@@ -69,7 +69,7 @@ def get_ground_loot():
     # print('\n')
     print(f'Processing all {demo_image_count} image(s) took {round(total_elapsed_time, 2)} ({round(total_elapsed_time / demo_image_count, 2)} avg)')
     for image in all_image_data:
-        cv2.imshow('D2R Image Demo', image)
+        cv2.imshow('PD2 Image Demo', image)
         cv2.waitKey()
     cv2.destroyAllWindows()
     keyboard.add_hotkey('f12', lambda: os._exit(1))
@@ -116,7 +116,7 @@ def get_hovered_items():
             demo_image_count += 1
     print(f'Processing all {demo_image_count} image(s) took {round(total_elapsed_time, 2)} ({round(total_elapsed_time / demo_image_count, 2)} avg)')
     for image in all_image_data:
-        cv2.imshow('D2R Image Demo', image)
+        cv2.imshow('PD2 Image Demo', image)
         cv2.waitKey()
     cv2.destroyAllWindows()
     keyboard.add_hotkey('f12', lambda: os._exit(1))

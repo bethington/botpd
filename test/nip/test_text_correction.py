@@ -1,5 +1,5 @@
 import pytest
-from d2r_image import ocr, processing_helpers, d2data_lookup
+from pd2_image import ocr, processing_helpers, d2data_lookup
 
 
 @pytest.mark.parametrize("ocr_string, expected_string", [

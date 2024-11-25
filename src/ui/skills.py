@@ -8,7 +8,7 @@ from screen import grab
 from config import Config
 import template_finder
 from ui_manager import wait_until_visible, ScreenObjects
-from d2r_image import ocr
+from pd2_image import ocr
 
 def is_left_skill_selected(template_list: list[str]) -> bool:
     """
@@ -22,7 +22,7 @@ def is_left_skill_selected(template_list: list[str]) -> bool:
 
 def has_tps() -> bool:
     """
-    :return: Returns True if botty has town portals available. False otherwise
+    :return: Returns True if botpd has town portals available. False otherwise
     """
     if Config().char["town_portal"]:
         keyboard.send(Config().char["town_portal"])

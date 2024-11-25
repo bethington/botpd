@@ -39,13 +39,13 @@ from inventory import personal, vendor, belt, common
 from run import Pindle, ShenkEld, Trav, Nihlathak, Arcane, Diablo
 from town import TownManager, A1, A2, A3, A4, A5, town_manager
 
-from messages import Messenger
+# from messages import Messenger
 
 class Bot:
 
     def __init__(self, game_stats: GameStats):
         self._game_stats = game_stats
-        self._messenger = Messenger()
+        # self._messenger = Messenger()
         self._pather = Pather()
         self._pickit = PickIt()
 
@@ -185,12 +185,12 @@ class Bot:
     def restart_or_exit(self, message: str =""):
         if message:
             Logger.error(message)
-        if Config().general["restart_d2r_when_stuck"]:
-            Logger.info("Restart botty")
-            restart_game(Config().general["d2r_path"], Config().advanced_options["launch_options"])
+        if Config().general["restart_pd2_when_stuck"]:
+            Logger.info("Restart botpd")
+            restart_game(Config().general["pd2_path"], Config().advanced_options["launch_options"])
             self.stop()
         else:
-            Logger.info("Shut down botty")
+            Logger.info("Shut down botpd")
             safe_exit()
 
     def current_game_length(self):
@@ -430,8 +430,8 @@ class Bot:
             if elapsed_time > (Config().general["max_runtime_before_break_m"]*60):
                 break_msg = f'Ran for {hms(elapsed_time)}, taking a break for {hms(Config().general["break_length_m"]*60)}.'
                 Logger.info(break_msg)
-                if self._messenger.enabled:
-                    self._messenger.send_message(break_msg)
+                # if self._messenger.enabled:
+                #     self._messenger.send_message(break_msg)
                 if not self._pausing:
                     self.toggle_pause()
 
@@ -439,8 +439,8 @@ class Bot:
 
                 break_msg = f'Break over, will now run for {hms(Config().general["max_runtime_before_break_m"]*60)}.'
                 Logger.info(break_msg)
-                if self._messenger.enabled:
-                    self._messenger.send_message(break_msg)
+                # if self._messenger.enabled:
+                #     self._messenger.send_message(break_msg)
                 if self._pausing:
                     self.toggle_pause()
 

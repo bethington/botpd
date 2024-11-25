@@ -265,6 +265,6 @@ for error in error_array:
         result_file.write (line)
 
 Logger.info ("=================================================================================================")
-Logger.info ("Parsed log/log.txt - results & details for failed runs stored in " + str(result_file) + " in botty root folder")
+Logger.info ("Parsed log/log.txt - results & details for failed runs stored in " + str(result_file) + " in botpd root folder")
 Logger.info ("=================================================================================================")
 #Logger.info ("\n" + str(table1))

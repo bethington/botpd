@@ -137,7 +137,7 @@ class DrognanShopper:
     # A variation of the move() function from pather.py
     def hold_move(self, pos_monitor: tuple[float, float], time_held: float = 2.0):
         factor = Config().advanced_options["pathing_delay_factor"]
-        # in case we want to walk we actually want to move a bit before the point cause d2r will always "overwalk"
+        # in case we want to walk we actually want to move a bit before the point cause pd2 will always "overwalk"
         pos_screen = convert_monitor_to_screen(pos_monitor)
         pos_abs = convert_screen_to_abs(pos_screen)
 

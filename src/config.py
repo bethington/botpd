@@ -127,7 +127,7 @@ class Config:
 
         self.general = {
             "saved_games_folder": self._select_val("general", "saved_games_folder"),
-            "name": _default_iff(self._select_val("general", "name"), "", "botty"),
+            "name": _default_iff(self._select_val("general", "name"), "", "botpd"),
             "max_game_length_s": float(self._select_val("general", "max_game_length_s")),
             "max_consecutive_fails": int(self._select_val("general", "max_consecutive_fails")),
             "max_runtime_before_break_m": float(_default_iff(self._select_val("general", "max_runtime_before_break_m"), '', 0)),
@@ -141,8 +141,8 @@ class Config:
             "discord_log_chicken": bool(int(self._select_val("general", "discord_log_chicken"))),
             "info_screenshots": bool(int(self._select_val("general", "info_screenshots"))),
             "pickit_screenshots": bool(int(self._select_val("general", "pickit_screenshots"))),
-            "d2r_path": _default_iff(self._select_val("general", "d2r_path"), "", "C:\Program Files (x86)\Diablo II Resurrected"),
-            "restart_d2r_when_stuck": bool(int(self._select_val("general", "restart_d2r_when_stuck"))),
+            "pd2_path": _default_iff(self._select_val("general", "pd2_path"), "", "C:\Diablo2Project\ProjectD2"),
+            "restart_pd2_when_stuck": bool(int(self._select_val("general", "restart_pd2_when_stuck"))),
         }
 
         self.routes = {}
@@ -151,7 +151,7 @@ class Config:
         del self.configs["config"]["parser"]["routes"]["order"]
         for key in self.routes_order:
             self.routes[key] = True
-        # Botty only knows "run_shenk" but in orders we split run_eldritch and run_eldritch_shenk
+        # Botpd only knows "run_shenk" but in orders we split run_eldritch and run_eldritch_shenk
         self.routes_order = ["run_shenk" if x in ["run_eldritch", "run_eldritch_shenk"] else x for x in self.routes_order]
 
         self.char = {

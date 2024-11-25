@@ -160,7 +160,7 @@ if __name__ == "__main__":
     from health_manager import set_pause_state
     from screen import start_detecting_window, stop_detecting_window, grab
     keyboard.add_hotkey('f12', lambda: Logger.info('Force Exit (f12)') or os._exit(1))
-    Logger.info("Open d2r window and press f11 to start health manager")
+    Logger.info("Open pd2 window and press f11 to start health manager")
     keyboard.wait("f11")
     start_detecting_window()
 

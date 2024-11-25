@@ -1,7 +1,7 @@
 from config import Config
 from dataclasses import dataclass
 from logger import Logger
-from d2r_image.data_models import HoveredItem
+from pd2_image.data_models import HoveredItem
 
 @dataclass
 class Consumables:

@@ -1,7 +1,7 @@
-from d2r_image.d2data_lookup import find_base_item_from_magic_item_text, find_pattern_match, find_set_item_by_name, find_unique_item_by_name, get_base, get_rune, is_base, is_rune, is_consumable, get_consumable, get_by_name
-from d2r_image.data_models import HoveredItem, ItemQuality
-from d2r_image.bnip_data import BNIP_ALIAS_STAT_PATTERNS, NTIP_ALIAS_QUALITY_MAP, PROPS_TO_SKILLID, BNIP_ALIAS_STAT_PATTERNS_NO_INTS, BNIP_ITEM_TYPE_DATA
-from d2r_image.processing_data import Runeword
+from pd2_image.d2data_lookup import find_base_item_from_magic_item_text, find_pattern_match, find_set_item_by_name, find_unique_item_by_name, get_base, get_rune, is_base, is_rune, is_consumable, get_consumable, get_by_name
+from pd2_image.data_models import HoveredItem, ItemQuality
+from pd2_image.bnip_data import BNIP_ALIAS_STAT_PATTERNS, NTIP_ALIAS_QUALITY_MAP, PROPS_TO_SKILLID, BNIP_ALIAS_STAT_PATTERNS_NO_INTS, BNIP_ITEM_TYPE_DATA
+from pd2_image.processing_data import Runeword
 from rapidfuzz.string_metric import levenshtein
 from bnip.NTIPAliasType import NTIPAliasType as NTIP_TYPES
 from bnip.NTIPAliasStat import NTIPAliasStat as NTIP_STATS

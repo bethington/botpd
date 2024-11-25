@@ -3,10 +3,10 @@ import time
 
 import cv2
 import numpy as np
-from d2r_image.data_models import GroundItemList, HoveredItem, ItemQuality, ItemText
-from d2r_image.bnip_helpers import parse_item
+from pd2_image.data_models import GroundItemList, HoveredItem, ItemQuality, ItemText
+from pd2_image.bnip_helpers import parse_item
 
-from d2r_image.processing_helpers import build_d2_items, crop_text_clusters, crop_item_tooltip, get_items_by_quality, consolidate_clusters, find_base_and_remove_items_without_a_base, set_set_and_unique_base_items
+from pd2_image.processing_helpers import build_d2_items, crop_text_clusters, crop_item_tooltip, get_items_by_quality, consolidate_clusters, find_base_and_remove_items_without_a_base, set_set_and_unique_base_items
 import numpy as np
 
 from logger import Logger
@@ -51,14 +51,14 @@ if __name__ == "__main__":
     import keyboard
     import os
     from screen import start_detecting_window, stop_detecting_window, grab
-    from d2r_image import processing as d2r_image
-    from d2r_image.demo import draw_items_on_image_data, gen_truth_from_ground_loot
+    from pd2_image import processing as pd2_image
+    from pd2_image.demo import draw_items_on_image_data, gen_truth_from_ground_loot
     from bnip.actions import should_keep, should_pickup
     import json
     from logger import Logger
     start_detecting_window()
     keyboard.add_hotkey('f12', lambda: Logger.info('Force Exit (f12)') or stop_detecting_window() or os._exit(1))
-    Logger.info("Move to d2r window and press f11")
+    Logger.info("Move to pd2 window and press f11")
     keyboard.wait("f11")
 
     gen_truth = False
@@ -66,7 +66,7 @@ if __name__ == "__main__":
     while 1:
         img = grab().copy()
         # look for item tooltip
-        item, res = d2r_image.get_hovered_item(img)
+        item, res = pd2_image.get_hovered_item(img)
         if res.roi is not None:
             Logger.debug(f"Keep {item.Quality} {item.BaseItem['DisplayName']}?: {should_keep(item.as_dict())}")
             x, y, w, h = res.roi
@@ -74,7 +74,7 @@ if __name__ == "__main__":
             Logger.debug(f"{json.dumps(item.as_dict(), indent=4)}\n")
         else:
             # look for dropped items
-            all_loot = d2r_image.get_ground_loot(img)
+            all_loot = pd2_image.get_ground_loot(img)
             if all_loot.items and len(all_loot.items) > 0:
                 for item in all_loot.items:
                     if item:

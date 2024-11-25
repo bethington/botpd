@@ -11,7 +11,7 @@ from config import Config
 from logger import Logger
 from game_controller import GameController
 from utils.graphic_debugger import GraphicDebuggerController
-from utils.misc import restore_d2r_window_visibility
+from utils.misc import restore_pd2_window_visibility
 from utils.auto_settings import adjust_settings, backup_settings, restore_settings_from_backup
 
 @dataclass
@@ -25,7 +25,7 @@ def start_or_pause_bot(controllers: Controllers):
         controllers.game.toggle_pause_bot()
         screen.stop_detecting_window()
     else:
-        # Kill any other controllers and start botty
+        # Kill any other controllers and start botpd
         controllers.debugger.stop()
         screen.start_detecting_window()
         controllers.game.start()
@@ -43,20 +43,20 @@ def start_or_stop_graphic_debugger(controllers: Controllers):
 def on_exit():
     Logger.info(f'Force Exit')
     screen.stop_detecting_window()
-    restore_d2r_window_visibility()
+    restore_pd2_window_visibility()
     os._exit(1)
 
 def startup_checks():
     # check if paths contain non-ascii characters
     check_for_non_ascii = {
-        "D2R path": Config().general["d2r_path"],
+        "PD2 path": Config().general["pd2_path"],
         "Windows username": os.getlogin(),
-        "Botty path": os.getcwd()
+        "Botpd path": os.getcwd()
     }
     for key, value in check_for_non_ascii.items():
         strip_punctuation = value.translate(str.maketrans('', '', string.punctuation))
         if not len(strip_punctuation) == len(strip_punctuation.encode()):
-            print(f"\n!! WARNING: {key} ({value}) contains incompatible characters. This could result in Botty encoding errors.\n")
+            print(f"\n!! WARNING: {key} ({value}) contains incompatible characters. This could result in Botpd encoding errors.\n")
 
 
 def main():
@@ -76,15 +76,15 @@ def main():
         print(f"ERROR: Unkown logg_lvl {Config().advanced_options['logg_lvl']}. Must be one of [info, debug]")
     startup_checks()
 
-    print(f"============ Botty {__version__} [name: {Config().general['name']}] ============")
-    print("\nFor gettings started and documentation\nplease read https://github.com/aeon0/botty\n")
+    print(f"============ Botpd {__version__} [name: {Config().general['name']}] ============")
+    print("\nFor gettings started and documentation\nplease read https://github.com/aeon0/botpd\n")
     table = BeautifulTable()
     table.set_style(BeautifulTable.STYLE_BOX_ROUNDED)
-    table.rows.append([Config().advanced_options['restore_settings_from_backup_key'], "Restore D2R settings from backup"])
-    table.rows.append([Config().advanced_options['settings_backup_key'], "Backup D2R current settings"])
-    table.rows.append([Config().advanced_options['auto_settings_key'], "Adjust D2R settings"])
+    table.rows.append([Config().advanced_options['restore_settings_from_backup_key'], "Restore PD2 settings from backup"])
+    table.rows.append([Config().advanced_options['settings_backup_key'], "Backup PD2 current settings"])
+    table.rows.append([Config().advanced_options['auto_settings_key'], "Adjust PD2 settings"])
     table.rows.append([Config().advanced_options['graphic_debugger_key'], "Start / Stop Graphic debugger"])
-    table.rows.append([Config().advanced_options['resume_key'], "Start / Pause Botty"])
+    table.rows.append([Config().advanced_options['resume_key'], "Start / Pause Botpd"])
     table.rows.append([Config().advanced_options['exit_key'], "Stop bot"])
     table.columns.header = ["hotkey", "action"]
     print(table)

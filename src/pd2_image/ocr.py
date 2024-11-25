@@ -2,9 +2,9 @@ from tesserocr import PyTessBaseAPI, OEM
 import numpy as np
 import cv2
 from utils.misc import erode_to_black, find_best_match
-from d2r_image.data_models import OcrResult
-from d2r_image.ocr_data import ERROR_RESOLUTION_MAP, I_1, II_U, ONE_I, ONEONE_U
-from d2r_image.strings_store import all_words
+from pd2_image.data_models import OcrResult
+from pd2_image.ocr_data import ERROR_RESOLUTION_MAP, I_1, II_U, ONE_I, ONEONE_U
+from pd2_image.strings_store import all_words
 from logger import Logger
 
 def image_to_text(
@@ -30,7 +30,7 @@ def image_to_text(
     :param psm: Tesseract PSM to use. 7=single uniform text line, 6=single block of text, 3=auto without orientation.
         See https://www.pyimagesearch.com/2021/11/15/tesseract-page-segmentation-modes-psms-explained-how-to-improve-your-ocr-accuracy/
     :param word_list: predefined wordlist to use. Tesseract will use these to help with recognition
-    :param scale: scales input image, sometimes necessary for smaller text (but doesn't always improve accuracy). Engd2r_inv_th trained on ~1.6x scaled assets.
+    :param scale: scales input image, sometimes necessary for smaller text (but doesn't always improve accuracy). Engpd2_inv_th trained on ~1.6x scaled assets.
     :param crop_pad: crop the outer part and then re-pad image. Intended for item drops.
     :param erode: use erosion function to erode image to black borders (i.e. for item drops)
     :param invert: invert and threshold the input image(s)

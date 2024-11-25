@@ -178,7 +178,7 @@ def _add_markers(img:str, threshz:str, rect_min_size:int=20, rect_max_size:int=5
 
 class LiveViewer:
     def __init__(self):
-        with open("./src/utils/live-view-last-settings.json") as f:
+        with open("./src/utils/live-view-last-d2gl.json") as f:
             self.settings = json.loads(f.read())
         self.use_existing_image = False
         self.existing_image_path = "test/assets/mobs.png"
@@ -224,7 +224,7 @@ class LiveViewer:
             self.settings['contrast'] = cv2.getTrackbarPos('contrast', 'Settings')
             self.settings['thresh'] = cv2.getTrackbarPos('thresh', 'Settings')
             self.settings['invert'] = cv2.getTrackbarPos('invert', 'Settings')
-            with open("./src/utils/live-view-last-settings.json", 'w') as f:
+            with open("./src/utils/live-view-last-d2gl.json", 'w') as f:
                 f.write(json.dumps(self.settings))
         except cv2.error:
             return
@@ -246,7 +246,7 @@ if __name__ == "__main__":
     from screen import start_detecting_window, stop_detecting_window
     keyboard.add_hotkey('f12', lambda: Logger.info('Force Exit (f12)') or stop_detecting_window() or os._exit(1))
     start_detecting_window()
-    print("Move to d2r window and press f11")
+    print("Move to pd2 window and press f11")
     keyboard.wait("f11")
     # l = LiveViewer()
 

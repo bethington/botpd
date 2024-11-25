@@ -1,5 +1,5 @@
 from enum import Enum
-from d2r_image.data_models import ItemQuality
+from pd2_image.data_models import ItemQuality
 import cv2
 
 ITEM_COLORS = ['white', 'gray', 'blue', 'green', 'yellow', 'gold', 'orange']

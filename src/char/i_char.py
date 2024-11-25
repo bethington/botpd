@@ -193,7 +193,7 @@ class IChar:
             mouse.click(button="right")
             wait(self._cast_duration, self._cast_duration + 0.02)
         else:
-            # in case we want to walk we actually want to move a bit before the point cause d2r will always "overwalk"
+            # in case we want to walk we actually want to move a bit before the point cause pd2 will always "overwalk"
             pos_screen = convert_monitor_to_screen(pos_monitor)
             pos_abs = convert_screen_to_abs(pos_screen)
             dist = math.dist(pos_abs, (0, 0))
@@ -211,7 +211,7 @@ class IChar:
 
     def walk(self, pos_monitor: tuple[float, float], force_tp: bool = False, force_move: bool = False):
         factor = Config().advanced_options["pathing_delay_factor"]
-            # in case we want to walk we actually want to move a bit before the point cause d2r will always "overwalk"
+            # in case we want to walk we actually want to move a bit before the point cause pd2 will always "overwalk"
         pos_screen = convert_monitor_to_screen(pos_monitor)
         pos_abs = convert_screen_to_abs(pos_screen)
         dist = math.dist(pos_abs, (0, 0))
@@ -386,7 +386,7 @@ if __name__ == "__main__":
     import os
     import keyboard
     keyboard.add_hotkey('f12', lambda: os._exit(1))
-    print(f"Get on D2R screen and press F11 when ready")
+    print(f"Get on PD2 screen and press F11 when ready")
     keyboard.wait("f11")
     from utils.misc import cut_roi
     from config import Config

@@ -287,13 +287,15 @@ class GraphicDebuggerController:
         search_templates = ["A5_TOWN_0", "A5_TOWN_1", "A5_TOWN_2", "A5_TOWN_3"]
         while 1:
             img = grab()
+            combined_img = img.copy()  # Initialize combined_img with a copy of img
             # Show Town A5 template matches
             scores = {}
             for template_name in search_templates:
                 template_match = template_finder.search(template_name, img, threshold=0.65)
                 if template_match.valid:
                     scores[template_match.name] = template_match.score
-                    cv2.putText(combined_img, str(template_name), template_match.center, cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
+                    cv2.putText(combined_img, str(template_name), template_match.center, cv2.FONT_HERSHEY_SIMPLEX, 1,
+                                (255, 255, 255), 2, cv2.LINE_AA)
                     cv2.circle(combined_img, template_match.center, 7, (255, 0, 0), thickness=5)
             if len(scores) > 0:
                 print(scores)

@@ -24,7 +24,7 @@ def main():
 
     print(f"============ Shop {__version__} [name: {Config().general['name']}] ============")
     table = BeautifulTable()
-    table.rows.append(["f10", "Shop at Drognan (for D2R Classic)"])
+    table.rows.append(["f10", "Shop at Drognan (for PD2 Classic)"])
     table.rows.append(["f11", "Shop at Anya"])
     table.rows.append([Config().advanced_options['exit_key'], "Stop shop"])
     table.columns.header = ["hotkey", "action"]

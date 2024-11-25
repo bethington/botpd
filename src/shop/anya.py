@@ -14,7 +14,7 @@ import template_finder
 from utils.custom_mouse import mouse
 from utils.misc import wait, load_template
 
-from messages import Messenger
+# from messages import Messenger
 
 
 def exit(run_obj):
@@ -63,7 +63,7 @@ class AnyaShopper:
         self.trap_claw_min_score = Config().shop["trap_min_score"]
         self.look_for_melee_claws = Config().shop["shop_melee_claws"]
         self.melee_claw_min_score = Config().shop["melee_min_score"]
-        self._messenger = Messenger()
+        # self._messenger = Messenger()
         self.run_count = 0
         self.start_time = time.time()
         self.ias_gloves_seen = 0
@@ -115,8 +115,8 @@ class AnyaShopper:
                     )
                     if gg_gloves.valid:
                         mouse.click(button="right")
-                        if self._messenger.enabled:
-                            self._messenger.send_message("Bought awesome IAS/+3 gloves!")
+                        # if self._messenger.enabled:
+                        #     self._messenger.send_message("Bought awesome IAS/+3 gloves!")
 
                         Logger.info("IAS/+3 gloves bought!")
                         self.gloves_bought += 1
@@ -133,8 +133,8 @@ class AnyaShopper:
                         )
                         if g_gloves.valid:
                             mouse.click(button="right")
-                            if self._messenger.enabled:
-                                self._messenger.send_message("Bought some decent IAS/+2 gloves")
+                            # if self._messenger.enabled:
+                            #     self._messenger.send_message("Bought some decent IAS/+2 gloves")
                             Logger.info("IAS/+2 gloves bought!")
                             self.gloves_bought += 1
                             time.sleep(1)
@@ -183,8 +183,8 @@ class AnyaShopper:
                     if trap_score > self.trap_claw_min_score and self.look_for_trap_claws is True:
                         # pick it up
                         mouse.click(button="right")
-                        if self._messenger.enabled:
-                            self._messenger.send_message(f"Bought some terrific trap Claws (score: {trap_score})")
+                        # if self._messenger.enabled:
+                        #     self._messenger.send_message(f"Bought some terrific trap Claws (score: {trap_score})")
 
                         Logger.info(f"Trap Claws (score: {trap_score}) bought!")
                         self.claws_bought += 1
@@ -193,8 +193,8 @@ class AnyaShopper:
                     if melee_score > self.melee_claw_min_score and self.look_for_melee_claws is True:
                         # pick it up
                         mouse.click(button="right")
-                        if self._messenger.enabled:
-                            self._messenger.send_message(f"Bought some mad melee Claws (score: {melee_score})")
+                        # if self._messenger.enabled:
+                        #     self._messenger.send_message(f"Bought some mad melee Claws (score: {melee_score})")
                         Logger.info(f"Melee Claws (score: {melee_score}) bought!")
                         self.claws_bought += 1
                         time.sleep(1)

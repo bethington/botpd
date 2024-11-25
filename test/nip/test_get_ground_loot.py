@@ -3,8 +3,8 @@ import os
 import json
 import pytest
 from dataclasses import asdict
-from d2r_image import processing
-from d2r_image.data_models import GroundItemList
+from pd2_image import processing
+from pd2_image.data_models import GroundItemList
 from common import ExpressionTest, pretty_dict
 from functools import cache
 from pick_item_test_cases import BNIP_PICK_TESTS

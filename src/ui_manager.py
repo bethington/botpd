@@ -14,10 +14,10 @@ from screen import convert_abs_to_screen, convert_monitor_to_screen, convert_scr
 import template_finder
 from template_finder import TemplateMatch
 from dataclasses import dataclass
-from messages import Messenger
+# from messages import Messenger
 from game_stats import GameStats
 
-messenger = Messenger()
+# messenger = Messenger()
 game_stats = GameStats()
 T = TypeVar('T')
 
@@ -403,7 +403,7 @@ if __name__ == "__main__":
     from screen import start_detecting_window, grab, stop_detecting_window
     start_detecting_window()
     keyboard.add_hotkey('f12', lambda: Logger.info('Force Exit (f12)') or stop_detecting_window() or os._exit(1))
-    print("Go to D2R window and press f11 to start")
+    print("Go to PD2 window and press f11 to start")
     keyboard.wait("f11")
     from config import Config
 

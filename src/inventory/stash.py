@@ -2,7 +2,7 @@ from config import Config
 import os
 from utils.misc import wait
 from logger import Logger
-from messages import Messenger
+# from messages import Messenger
 
 curr_stash = {
     "items": 3 if Config().char["fill_shared_stash_first"] else 0,
@@ -20,8 +20,8 @@ def set_curr_stash(items: int = None, gold: int = None):
 
 def stash_full():
     Logger.error("All stash is full, quitting")
-    if Config().general["custom_message_hook"]:
-        Messenger().send_stash()
-    os.system("taskkill /f /im  D2R.exe")
+    # if Config().general["custom_message_hook"]:
+        # Messenger().send_stash()
+    os.system("taskkill /f /im  PD2.exe")
     wait(1.0, 1.5)
     os._exit(0)

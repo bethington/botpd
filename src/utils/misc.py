@@ -25,7 +25,7 @@ from rapidfuzz.process import extractOne
 from rapidfuzz.string_metric import levenshtein
 
 def close_down_d2():
-    subprocess.call(["taskkill","/F","/IM","D2R.exe"], stderr=subprocess.DEVNULL)
+    subprocess.call(["taskkill","/F","/IM","PD2.exe"], stderr=subprocess.DEVNULL)
 
 def close_down_bnet_launcher():
     subprocess.call(["taskkill","/F","/IM","Battle.net.exe"], stderr=subprocess.DEVNULL)
@@ -47,7 +47,7 @@ class WindowSpec:
             result = False
         return result
 
-def find_d2r_window(spec: WindowSpec, offset = (0, 0)) -> tuple[int, int]:
+def find_pd2_window(spec: WindowSpec, offset = (0, 0)) -> tuple[int, int]:
     offset_x, offset_y = offset
     if os.name == 'nt':
         window_list = []
@@ -59,27 +59,27 @@ def find_d2r_window(spec: WindowSpec, offset = (0, 0)) -> tuple[int, int]:
                 return (left + offset_x, top + offset_y)
     return None
 
-def set_d2r_always_on_top():
+def set_pd2_always_on_top():
     if os.name == 'nt':
         windows_list = []
         EnumWindows(lambda w, l: l.append((w, GetWindowText(w))), windows_list)
         for w in windows_list:
-            if w[1] == "Diablo II: Resurrected":
+            if w[1] == "Diablo II":
                 SetWindowPos(w[0], HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE)
-                print("Set D2R to be always on top")
+                print("Set PD2 to be always on top")
     else:
-        print('OS not supported, unable to set D2R always on top')
+        print('OS not supported, unable to set PD2 always on top')
 
-def restore_d2r_window_visibility():
+def restore_pd2_window_visibility():
     if os.name == 'nt':
         windows_list = []
         EnumWindows(lambda w, l: l.append((w, GetWindowText(w))), windows_list)
         for w in windows_list:
-            if w[1] == "Diablo II: Resurrected":
+            if w[1] == "Diablo II":
                 SetWindowPos(w[0], HWND_NOTOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE)
-                print("Restored D2R window visibility")
+                print("Restored PD2 window visibility")
     else:
-        print('OS not supported, unable to set D2R always on top')
+        print('OS not supported, unable to set PD2 always on top')
 
 def wait(min_seconds, max_seconds = None):
     if max_seconds is None:
@@ -264,5 +264,5 @@ def slugify(value, allow_unicode=False):
 
 def only_lowercase_letters(value):
     if not (x := ''.join(filter( lambda x: x in 'abcdefghijklmnopqrstuvwxyz', value ))):
-        x = "botty"
+        x = "botpd"
     return x

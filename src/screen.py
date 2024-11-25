@@ -1,7 +1,7 @@
 import numpy as np
 from mss import mss
 from logger import Logger
-from utils.misc import WindowSpec, find_d2r_window, wait
+from utils.misc import WindowSpec, find_pd2_window, wait
 from config import Config
 import threading
 import time
@@ -41,7 +41,7 @@ def detect_window_position():
     Logger.debug('Detect window thread stopped')
 
 def find_and_set_window_position():
-    position = find_d2r_window(FIND_WINDOW, offset=Config(
+    position = find_pd2_window(FIND_WINDOW, offset=Config(
     ).advanced_options["window_client_area_offset"])
     if position is not None:
         set_window_position(*position)
@@ -78,7 +78,8 @@ def grab(force_new: bool = False) -> np.ndarray:
     else:
         with cached_img_lock:
             last_grab = time.perf_counter()
-        img = np.array(sct.grab(monitor_roi))
+        with mss() as sct:
+            img = np.array(sct.grab(monitor_roi))
         with cached_img_lock:
             cached_img = img[:, :, :3]
         return cached_img

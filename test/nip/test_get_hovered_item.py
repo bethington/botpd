@@ -3,8 +3,8 @@ import cv2
 import json
 from dataclasses import asdict
 import pytest
-from d2r_image import processing
-from d2r_image.data_models import HoveredItem
+from pd2_image import processing
+from pd2_image.data_models import HoveredItem
 from functools import cache
 from keep_item_test_cases import BNIP_KEEP_TESTS
 from common import ExpressionTest, pretty_dict
